@@ -15,4 +15,5 @@ public interface IProductRepo
     public int InsertProduct(Product productToInsert);
     public IEnumerable<Category> GetCategories();
     public Product AssignCategory();
+    public void DeleteProduct(Product productId);
 }

@@ -71,5 +71,12 @@ public class ProductRepo : IProductRepo
 
         return product;
     }
+
+    public void DeleteProduct(Product productToDelete)
+    {
+        _connection.Execute("DELETE FROM REVIEWS WHERE PRODUCTID = @productId", new {productId = productToDelete.ProductID});
+        _connection.Execute("DELETE FROM SALES WHERE PRODUCTID = @productId", new {productId = productToDelete.ProductID});
+        _connection.Execute("DELETE FROM PRODUCTS WHERE PRODUCTID = @productId", new {productId = productToDelete.ProductID});
+    }
 }
 
