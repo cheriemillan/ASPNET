@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<Product>
 
+@{
+    ViewData["Title"] = "Products List"; 
+}
+
 <!DOCTYPE html>
 
 <html>
@@ -9,6 +13,12 @@
 <body>
 <div>
     <h2>Products</h2>
+    
+    <div style="display: block">
+        <a href="Product/InsertProduct/">Create a new Product</a>
+    </div>
+    
+    
     <table class="table">
         <tr>
             <th>Product ID</th>
@@ -21,14 +31,14 @@
 
         @foreach (var product in @Model)
         {
-        <tr>
-            <td><a href=/Product/ViewProduct/@product.ProductID>@product.ProductID</a></td>
-            <td>@product.Name</td>
-            <td>@product.Price</td>
-            <td>@product.CategoryID</td>
-            <td>@product.OnSale</td>
-            <td>@product.StockLevel</td>
-        </tr>
+            <tr>
+                <td><a href=/Product/ViewProduct/@product.ProductID>@product.ProductID</a></td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.CategoryID</td>
+                <td>@product.OnSale</td>
+                <td>@product.StockLevel</td>
+            </tr>
         }
     </table>
 </div>
