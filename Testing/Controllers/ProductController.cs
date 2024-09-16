@@ -14,7 +14,7 @@ public class ProductController : Controller
         _repo = repo;
     }
     
-    // GET
+    // GET: Display all products
     public IActionResult Index()
     {
         var products = _repo.GetAllProducts();
@@ -24,6 +24,7 @@ public class ProductController : Controller
         return View(products);
     }
 
+    // GET: Display a specific product by ID
     public IActionResult ViewProduct(int id)
     {
         var product = _repo.GetProduct(id);
@@ -31,6 +32,7 @@ public class ProductController : Controller
         return View(product);
     }
 
+    // GET: Prepare to update a product by ID
     public IActionResult UpdateProduct(int id)
     {
         var product = _repo.GetProduct(id);
@@ -43,13 +45,15 @@ public class ProductController : Controller
         return View(product);
     }
 
-    public IActionResult UpdateProductToDataBAse(Product product)
+    // POST: Update product in the database
+    public IActionResult UpdateProductToDataBase(Product product)
     {
         _repo.UpdateProduct(product);
 
         return RedirectToAction("ViewProduct", new { id = product.ProductID });
     }
 
+    // GET: Prepare to insert a new product
     public IActionResult InsertProduct()
     {
         var product = _repo.AssignCategory();
@@ -57,13 +61,15 @@ public class ProductController : Controller
         return View(product);
     }
 
+    // POST: Insert a new product into the database
     public IActionResult InsertProductToDatabase(Product product)
     {
         var id= _repo.InsertProduct(product);
 
         return RedirectToAction("ViewProduct", new {id});
     }
-
+    
+    // POST: Delete a product from the database
     public IActionResult DeleteProduct(Product product)
     {
         _repo.DeleteProduct(product);

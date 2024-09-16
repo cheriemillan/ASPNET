@@ -8,6 +8,7 @@
 
 <table class = "table">
     <tr>
+        <!-- Table headers -->
         <th>Product ID</th>
         <th>Name</th>
         <th>Price</th>
@@ -16,6 +17,7 @@
         <th>StockLevel</th>
     </tr>
     <tr>
+        <!-- Table row with product details -->
         <td>@Model.ProductID</td>
         <td>@Model.Name</td>
         <td>@Model.Price</td>
@@ -24,10 +26,12 @@
         <td>@Model.StockLevel</td>
     </tr>
 </table>
+<!-- Link to update the product, passing the ProductID as a parameter. -->
 <div style="display: block">
     <a href="/Product/UpdateProduct/@Model.ProductID">Update this Product</a>
 </div>
 
+<!-- Link to navigate back to the list view of products. -->
 <div style="display: block">
     <a href="/Product/Index">Back to List View</a>
 </div>
@@ -35,7 +39,9 @@
 
     @using (Html.BeginForm("DeleteProduct", "Product", "Post"))
     {
+        <!-- Begins a form for posting a delete request to the DeleteProduct action in the Product controller. -->
         <input type="hidden" asp-for="ProductID" value="@Model.ProductID" />
+        <!-- Submit button for deleting the product, with a confirmation prompt. -->
         <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this product" />
     }
 </div>

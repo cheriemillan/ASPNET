@@ -10,24 +10,37 @@
 
     @using (Html.BeginForm("InsertProductToDatabase", "Product", "Post"))
     {
-        <input asp-for="ProductID" type="hidden" value=""/>
+        // Begins a form posting to InsertProductToDatabase in the Product controller.
 
+        <input asp-for="ProductID" type="hidden" value=""/>
+        // Hidden input for ProductID, useful for updates.
+        
         <label asp-for="Name" class="control-label">Name</label>
+        // Label for the Name input field.
+        
         <input type="text" name="Name" class="form-control" value=""/>
+        // Input field for the product name.
 
         <label asp-for="Price" class="control-label">Price</label>
+        // Label for the Price input field.
+        
         <input type="number" step="0.01" name="Price" class="form-control"/>
+        // Input field for the product price with decimal support.
 
         <div class="form-group">
             <label for="">Select a Category</label>
+            <!--Label for category dropdown. -->
             <select class="form-control" name="CategoryID" value="">
                 @foreach (var cat in Model.Categories)
                 {
                     <option value="@cat.CategoryID">@cat.CategoryID @cat.Name</option>
+                    <!-- Dropdown options for categories -->
                 }
+                
             </select>
         </div>
 
+        //Submit button that creates the product
         <input type="submit" value="Create Product" class="btn btn-primary"/>
     }
 </div>

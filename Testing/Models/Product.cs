@@ -2,6 +2,7 @@
 
 namespace Testing.Models;
 
+//properties for product
 public class Product
 {
     public int ProductID { get; set; }

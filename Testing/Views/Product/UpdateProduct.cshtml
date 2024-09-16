@@ -15,14 +15,24 @@
     <h2>Update @Model.Name</h2>
     @using (Html.BeginForm("UpdateProductToDatabase", "Product", "Post"))
     {
+        <!-- Begins a form posting to UpdateProductToDatabase in the Product controller. -->
+        
+        <!-- Hidden input to store the product ID for updating. -->
         <input asp-for="ProductID" type="hidden" value="@Model.ProductID"/>
 
+        <!-- Label for the Name input field. -->
         <label asp-for="Name" class="control-label">Name</label>
+        
+        <!-- Input field pre-filled with the current product name. -->
         <input type="text" name="Name" class="form-control" value="@Model.Name"/>
 
+        <!-- Label for the Price input field. -->
         <label asp-for="Price" class="control-label">Price</label>
+        
+        <!-- Input field pre-filled with the current product price, supports decimal values. -->
         <input type="number" step="0.01" name="Price" class="form-control" value="@Model.Price"/>
-
+        
+        //Submit button which updates the progress
         <input type="submit" value="Update Product" class="btn btn-primary"/>
     }
         </div>

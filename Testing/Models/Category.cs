@@ -2,6 +2,7 @@
 
 public class Category
 {
+    //properties for category
     public int CategoryID { get; set; }
     
     public string Name { get; set; }
